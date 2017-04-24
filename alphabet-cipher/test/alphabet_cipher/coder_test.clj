@@ -2,6 +2,20 @@
   (:require [clojure.test :refer :all]
             [alphabet-cipher.coder :refer :all]))
 
+(deftest test-alph-char
+  (testing "sequence of characters"
+    (is (= '(\a \b \c \d)
+           (alph-char \a \d)))
+    (is (= '(\x \y \z)
+           (alph-char \x \z)))))
+
+(deftest test-alph-str
+  (testing "string alphabet"
+    (is (= "abcd"
+           (alph-str (alph-char \a \d))))
+    (is (= "xyz"
+           (alph-str (alph-char \x \z))))))
+
 (deftest test-encode
   (testing "can encode given a secret keyword"
     (is (= "hmkbxebpxpmyllyrxiiqtoltfgzzv"
