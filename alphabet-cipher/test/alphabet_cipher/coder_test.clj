@@ -16,6 +16,22 @@
     (is (= "xyz"
            (alph-str (alph-char \x \z))))))
 
+(deftest test-alphabet
+  (testing "alphabet as a string"
+    (is (= "abcdefghijklmnopqrstuvwxyz"
+           alphabet))))
+
+(deftest test-alph-shift
+  (testing "alphabet shift"
+    (is (= "abcdefghijklmnopqrstuvwxyz"
+           (alph-shift alphabet 0)))
+    (is (= "bcdefghijklmnopqrstuvwxyza"
+           (alph-shift alphabet 1)))
+    (is (= "cdefghijklmnopqrstuvwxyzab"
+           (alph-shift alphabet 2)))
+    (is (= "zabcdefghijklmnopqrstuvwxy"
+           (alph-shift alphabet 25)))))
+
 (deftest test-encode
   (testing "can encode given a secret keyword"
     (is (= "hmkbxebpxpmyllyrxiiqtoltfgzzv"

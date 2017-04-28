@@ -6,6 +6,13 @@
 (defn alph-str [char-seq]
   (apply str char-seq))
 
+(def alphabet
+  (alph-str (alph-char \a \z)))
+
+(defn alph-shift [alph offset]
+  (apply str (concat (drop offset alphabet)
+          (take offset alphabet))))
+
 (defn encode [keyword message]
   "encodeme")
 
